@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.h": "cpp"
+    },
+    "C_Cpp.default.forcedInclude": [
+        "${workspaceFolder}/content/contest/template.cpp"
+    ],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false,
+    "editor.rulers": [
+        63
+    ]
+}
