@@ -3,7 +3,7 @@
  * Date: 2026-09-09
  * Description: 1-indexed recursive segment tree with point update and range query.
  * Time: O(\log N)
- * Status: none
+ * Status: tested
  */
 #pragma once
 
