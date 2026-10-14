@@ -1,0 +1,14 @@
+\section{Counting identities}
+\textbf{Catalan:} $C_n=\binom{2n}{n}-\binom{2n}{n+1}$,
+$C_0=1$, $C_n=\sum_{i=0}^{n-1}C_i C_{n-1-i}$.
+Counts balanced parentheses and triangulations of an $(n+2)$-gon.
+
+\textbf{Inclusion--exclusion:}
+$|\bigcup_{i=1}^n A_i|=\sum_{\emptyset\ne S\subseteq[n]}
+(-1)^{|S|+1}|\bigcap_{i\in S}A_i|$.
+
+\textbf{Burnside:} number of orbits under a finite group $G$ is
+$\frac{1}{|G|}\sum_{g\in G}|\operatorname{Fix}(g)|$.
+For length $n$ necklaces with $k$ colors (rotations only):
+$\frac1n\sum_{d\mid n}\phi(d)k^{n/d}$.
+Modular division requires an invertible denominator.

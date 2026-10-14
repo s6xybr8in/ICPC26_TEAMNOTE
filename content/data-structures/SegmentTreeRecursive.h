@@ -7,13 +7,13 @@
  */
 #pragma once
 
-struct Tree {
+struct SegmentTreeRecursive {
 	typedef int T;
 	static constexpr T unit = 0;
 	T f(T a, T b) { return a + b; } // (any associative fn)
 	int n;
 	vector<T> tree;
-	Tree(int n = 0, T def = unit) : n(n), tree(4 * n + 5, def) {}
+	SegmentTreeRecursive(int n = 0, T def = unit) : n(n), tree(4 * n + 5, def) {}
 
 	void update(int node, int s, int e,int pos, T val) {
 		if (s == e) { tree[node] = val; return; }

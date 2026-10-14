@@ -7,6 +7,7 @@
 import sys
 import getopt
 import subprocess
+import re
 
 
 def escape(input):
@@ -162,7 +163,10 @@ def processwithcomments(caption, instream, outstream, listingslang):
     else:
         addref(caption, outstream)
         if commands.get("Description"):
-            out.append(r"\defdescription{%s}" % escape(commands["Description"]))
+            description = escape(commands["Description"])
+            description = re.sub(r'(?<!\\)_', r'\\_', description)
+            description = description.replace('^', r'\char94{}')
+            out.append(r"\defdescription{%s}" % description)
         if commands.get("Usage"):
             out.append(r"\defusage{%s}" % codeescape(commands["Usage"]))
         if commands.get("Time"):

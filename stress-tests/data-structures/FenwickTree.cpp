@@ -1,25 +1,17 @@
+#include <cassert>
 #include "../utilities/template.h"
-
 #include "../../content/data-structures/FenwickTree.h"
-
 int main() {
-	rep(it,0,100000) {
-		int N = rand() % 10;
-		FT fw(N);
-		vi t(N);
-		rep(i,0,N) {
-			int v = rand() % 3;
-			fw.update(i, v);
-			t[i] += v;
-		}
-		int q = rand() % 20;
-		int ind = fw.lower_bound(q);
-		int res = -1, sum = 0;
-		rep(i,0,N+1) {
-			if (sum < q) res = i;
-			if (i != N) sum += t[i];
-		}
-		assert(res == ind);
-	}
-	cout<<"Tests passed!"<<endl;
+  srand(17);
+  for (int n=1; n<=100; ++n) {
+    FenwickTree fw(n); vector<ll> a(n+1);
+    for (int it=0; it<2000; ++it) {
+      int i=1+rand()%n, j=1+rand()%n;
+      if (i>j) swap(i,j);
+      if (rand()%2) {
+        int d=rand()%2001-1000; fw.update(i,d); a[i]+=d;
+      } else assert(fw.query(i,j)==accumulate(a.begin()+i,a.begin()+j+1,0LL));
+    }
+  }
+  cout << "Fenwick tests passed!\n";
 }
