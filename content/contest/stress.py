@@ -18,15 +18,13 @@ def build(name):
     if name.endswith(".py"):
         return [sys.executable, name]
     exe = name[:-4] + ".exe"
-    sp.run(["g++", "-std=c++17", "-O2", name, "-o", exe],
-           check=True)
+    sp.run(["g++", "-std=c++17", "-O2", name, "-o", exe], check=True)
     return [".\\" + exe]
 
 
 def run(cmd, source, dest):
     with open(source, "rb") as inp, open(dest, "wb") as out:
-        sp.run(cmd, stdin=inp, stdout=out,
-               timeout=TIME, check=True)
+        sp.run(cmd, stdin=inp, stdout=out, timeout=TIME, check=True)
 
 
 gen, naive, target = build(GEN), build(NAIVE), build(TARGET)
@@ -37,8 +35,7 @@ for seed in range(START, START + TESTS):
         open(name, "wb").close()
     try:
         with open("input.txt", "wb") as f:
-            sp.run(gen + [str(seed)], stdout=f,
-                   timeout=TIME, check=True)
+            sp.run(gen + [str(seed)], stdout=f, timeout=TIME, check=True)
         run(naive, "input.txt", "naive.out")
         run(target, "input.txt", "target.out")
     except (sp.TimeoutExpired, sp.CalledProcessError) as e:

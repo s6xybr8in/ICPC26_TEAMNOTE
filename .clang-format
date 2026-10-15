@@ -1,0 +1,15 @@
+BasedOnStyle: LLVM
+ColumnLimit: 96
+IndentWidth: 2
+TabWidth: 2
+UseTab: ForIndentation
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Empty
+BinPackArguments: true
+BinPackParameters: true
+BreakConstructorInitializers: BeforeColon
+SortIncludes: Never
+ReflowComments: Never

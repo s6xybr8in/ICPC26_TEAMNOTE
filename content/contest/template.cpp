@@ -2,14 +2,16 @@
 #include <cassert>
 using namespace std;
 
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define rep(i, a, b) for (int i = a; i < (b); ++i)
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 #define dbg(x) cout << #x << " = " << x << endl
 
 template <typename T> void print(const T &container) {
-    for (const auto &i : container) { cout << i << ' '; }
-    cout << endl;
+	for (const auto &i : container) {
+		cout << i << ' ';
+	}
+	cout << endl;
 }
 
 typedef long long ll;

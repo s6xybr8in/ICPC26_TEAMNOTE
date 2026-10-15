@@ -27,9 +27,9 @@
 | TopoSort | `topoSort(g)`. 사이클이면 빈 벡터. 빈 그래프도 빈 벡터 |
 | EulerWalk | `EulerWalk(n,directed)`, `walk(start)`. 무방향 간선은 한 번만 추가. 실패 시 빈 벡터 |
 | LCA | 연결된 비어 있지 않은 트리. `lca`, `dist`, `kth`, `ancestor`. 루트 위 조상은 -1. 서브트리 `[tin,tout]` |
-| HLD | `path(u,v,callback,edge=false)`. 콜백에 `[l,r]` 전달. 서브트리 `[pos[u],pos[u]+size[u]-1]`. 교환법칙 성립 연산용. 간선 값은 자식 정점에 저장 |
+| HLD | `path(u,v,callback,edge=false)`. 콜백에 `[l,r]` 전달. 서브트리 `[pos[u],pos[u]+sz[u]-1]`. 입력 g의 순서를 바꿔 가장 큰 자식을 `g[u][0]`에 배치. 부모 간선은 유지. 교환법칙 성립 연산용. 간선 값은 자식 정점에 저장 |
 | CompressTree | `virtualTree(vertices,lca)`. 필요한 LCA 자동 추가. `(부모,자식)`은 원래 정점 ID. 간선 길이는 `dist` |
-| CentroidDecomposition | `parent`는 센트로이드 트리 부모, 루트 -1. 원본 트리는 객체보다 오래 유지 |
+| CentroidDecomposition | `calcSize` → `findCentroid` → `build`의 재귀형. `parent`는 센트로이드 트리 부모, 루트 -1. 원본 트리는 객체보다 오래 유지. 일자 트리의 DFS 스택 깊이는 O(N) |
 | Dinic | 비음수 용량, `s != t`. `maxflow(s,t)`는 추가 유량 반환 |
 | MinCostMaxFlow | 초기 음수 비용 사이클 금지. 그래프당 `flow(s,t,limit)` 한 번. `(유량,비용)` 반환 |
 | HopcroftKarp | 좌·우 정점 ID 별도. `maxMatching()` 후 `minCover()` 호출 |

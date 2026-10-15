@@ -151,7 +151,20 @@ void trees() {
   for(int it=0;it<100;++it) {
     int n=1+rnd(100),root=rnd(n);vector<vector<int>> g(n);
     for(int u=1;u<n;++u) {int p=rnd(u);g[u].push_back(p);g[p].push_back(u);}
+    for(auto& adj:g) shuffle(adj.begin(),adj.end(),rng);
+    auto original=g;
     LCA l(g,root);HLD h(g,root);CentroidDecomposition cd(g);
+    for(int u=0;u<n;++u) {
+      auto before=original[u],after=g[u];
+      sort(before.begin(),before.end());sort(after.begin(),after.end());
+      assert(before==after);
+      for(int v:g[u]) if(v!=h.par[u]) {
+        assert(g[u][0]!=h.par[u]);
+        assert(h.sz[g[u][0]]>=h.sz[v]);
+        assert(h.pos[g[u][0]]==h.pos[u]+1);
+        assert(h.head[g[u][0]]==h.head[u]);
+      }
+    }
     for(int a=0;a<n;++a) for(int b=0;b<n;++b) {
       int u=a,v=b;
       while(l.depth[u]>l.depth[v]) u=l.up[0][u];
@@ -171,7 +184,7 @@ void trees() {
     for(int u=0;u<n;++u) {
       assert(l.kth(u,l.depth[u])==root && l.kth(u,l.depth[u]+1)==-1);
       for(int v=0;v<n;++v)
-        assert((h.pos[u]<=h.pos[v] && h.pos[v]<=h.pos[u]+h.size[u]-1)==l.ancestor(u,v));
+        assert((h.pos[u]<=h.pos[v] && h.pos[v]<=h.pos[u]+h.sz[u]-1)==l.ancestor(u,v));
       int count=0;for(int x=u;x!=-1;x=cd.parent[x]) {++count;assert(count<20);}
       // Remove centroid ancestors; u must balance its component.
       vector<bool> blocked(n);
