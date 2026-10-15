@@ -4,3 +4,4 @@
 *.gch
 a.out
 header.tmp
+/stress-failure/

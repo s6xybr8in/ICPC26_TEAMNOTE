@@ -42,7 +42,7 @@ KACTL은 LaTeX를 이용해 2열/3열의 고밀도 PDF를 빌드합니다. (Linu
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-publishers python3
+sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-publishers texlive-lang-korean python3
 ```
 
 ### 2. PDF 생성
@@ -52,6 +52,13 @@ make kactl       # 전체 빌드 (kactl.pdf 생성)
 make fast        # 빠른 빌드 (캐시 활용)
 make clean       # 빌드 산출물 정리
 ```
+
+### 한글 트러블슈팅 편집
+
+[`content/contest/troubleshoot.tex`](content/contest/troubleshoot.tex)를 UTF-8로 편집한 뒤
+WSL에서 `make kactl`을 실행합니다. 기존 `pdflatex`에 `kotex` 패키지를 추가해 한글을 출력합니다.
+트러블슈팅은 코드용 `listings` 대신 `\import{troubleshoot.tex}`로 넣어 한글 줄바꿈과 목록을 처리합니다.
+일반 문장에 밑줄을 적을 때는 `\_`, 코드 표기는 `\texttt{...}`를 사용합니다.
 
 > **제외된 알고리즘 확인**:  
 > `make showexcluded` 명령어로 현재 PDF에 미포함된(주석 처리된) 알고리즘 목록을 확인할 수 있습니다.
@@ -104,6 +111,11 @@ make clean       # 빌드 산출물 정리
 ---
 
 ## 🧪 테스트 (Testing)
+
+랜덤 입력 생성기와 naive/target 풀이를 비교하는 Python 템플릿은
+[`content/contest/stress.py`](content/contest/stress.py)입니다.
+사용법과 실행 가능한 Python/C++ 예제는
+[`content/contest/stress/README.md`](content/contest/stress/README.md)를 참고하세요.
 
 새로 추가한 41개 알고리즘의 API·전제조건·개별 검증 방법은
 [`doc/core-algorithms.md`](doc/core-algorithms.md)에 정리했습니다.
